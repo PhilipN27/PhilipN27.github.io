@@ -1,4 +1,21 @@
-p {
-    color: green;
-    font-size: 14;
+body {
+    font-family: Arial, sans-serif;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.project {
+    margin-bottom: 15px;
 }
