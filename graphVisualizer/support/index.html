@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1b1916">
+    <meta
+      name="description"
+      content="Contact Graphform support, report a problem, ask a question, or request a feature."
+    >
+    <link rel="canonical" href="https://philipn27.github.io/graphVisualizer/support/">
+    <title>Graphform Support</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --canvas: #1b1916;
+        --surface: #24211d;
+        --surface-raised: #2d2924;
+        --text: #f0ece3;
+        --muted: #bbb3a6;
+        --border: #5d554a;
+        --accent: #e9b84b;
+        --accent-ink: #241b0b;
+        --focus: #ffd271;
+        --shadow: 0 1.5rem 4rem rgb(0 0 0 / 28%);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-block-size: 100%;
+        background: var(--canvas);
+      }
+
+      body {
+        min-block-size: 100dvh;
+        margin: 0;
+        background:
+          radial-gradient(circle at 82% 7%, rgb(233 184 75 / 9%), transparent 28rem),
+          var(--canvas);
+        color: var(--text);
+        font-family: "Avenir Next", Avenir, "Helvetica Neue", sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      a:focus-visible {
+        outline: 0.1875rem solid var(--focus);
+        outline-offset: 0.25rem;
+      }
+
+      .shell {
+        inline-size: min(100% - 2rem, 68rem);
+        margin-inline: auto;
+        padding-block:
+          max(1.25rem, env(safe-area-inset-top))
+          max(2.5rem, env(safe-area-inset-bottom));
+      }
+
+      .masthead {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-block-size: 3.5rem;
+        border-block-end: 1px solid var(--border);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        inline-size: 2rem;
+        block-size: 2rem;
+        place-items: center;
+        border: 1px solid var(--accent);
+        border-radius: 0.5rem;
+        color: var(--accent);
+        font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+
+      .brand-name {
+        font-size: 1rem;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+      }
+
+      .masthead-label,
+      .eyebrow,
+      .section-label {
+        color: var(--muted);
+        font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      main {
+        padding-block-start: clamp(3.5rem, 10vw, 7.5rem);
+      }
+
+      .hero {
+        max-inline-size: 48rem;
+      }
+
+      .eyebrow {
+        margin: 0 0 1rem;
+        color: var(--accent);
+      }
+
+      h1 {
+        max-inline-size: 14ch;
+        margin: 0;
+        font-size: clamp(2.75rem, 8vw, 5.75rem);
+        font-weight: 620;
+        letter-spacing: -0.065em;
+        line-height: 0.96;
+        text-wrap: balance;
+      }
+
+      .lede {
+        max-inline-size: 42rem;
+        margin: 1.75rem 0 0;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2vw, 1.25rem);
+        line-height: 1.65;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.85rem 1.25rem;
+        margin-block-start: 2rem;
+      }
+
+      .primary-action {
+        display: inline-flex;
+        min-block-size: 3rem;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--accent);
+        border-radius: 0.65rem;
+        background: var(--accent);
+        color: var(--accent-ink);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .primary-action svg {
+        inline-size: 1rem;
+        block-size: 1rem;
+      }
+
+      .secondary-action {
+        color: var(--muted);
+        font-size: 0.95rem;
+        text-underline-offset: 0.25rem;
+      }
+
+      .support-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(17rem, 0.7fr);
+        gap: 1rem;
+        margin-block-start: clamp(4rem, 9vw, 7rem);
+      }
+
+      .panel {
+        padding: clamp(1.5rem, 4vw, 2.25rem);
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        background: rgb(36 33 29 / 88%);
+        box-shadow: var(--shadow);
+      }
+
+      h2 {
+        margin: 0.65rem 0 0;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        font-weight: 620;
+        letter-spacing: -0.035em;
+        line-height: 1.15;
+      }
+
+      .checklist {
+        display: grid;
+        gap: 0;
+        margin: 1.5rem 0 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: support-step;
+      }
+
+      .checklist li {
+        display: grid;
+        grid-template-columns: 2rem 1fr;
+        gap: 0.85rem;
+        align-items: start;
+        padding-block: 1rem;
+        border-block-start: 1px solid var(--border);
+        color: var(--muted);
+        line-height: 1.55;
+        counter-increment: support-step;
+      }
+
+      .checklist li::before {
+        content: counter(support-step, decimal-leading-zero);
+        color: var(--accent);
+        font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+        font-size: 0.75rem;
+        line-height: 1.9;
+      }
+
+      .details {
+        display: grid;
+        gap: 1.5rem;
+        align-content: start;
+      }
+
+      .details p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .details strong {
+        display: block;
+        margin-block-end: 0.35rem;
+        color: var(--text);
+        font-size: 0.95rem;
+      }
+
+      .privacy-note {
+        padding-block-start: 1.5rem;
+        border-block-start: 1px solid var(--border);
+      }
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-block-start: 4rem;
+        padding-block-start: 1.25rem;
+        border-block-start: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      footer p {
+        margin: 0;
+      }
+
+      footer a {
+        text-underline-offset: 0.2rem;
+      }
+
+      @media (hover: hover) {
+        .primary-action:hover {
+          background: #f3c866;
+        }
+
+        .secondary-action:hover,
+        footer a:hover {
+          color: var(--text);
+        }
+      }
+
+      @media (max-width: 44rem) {
+        .support-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .masthead-label {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="masthead">
+        <a class="brand" href="./" aria-label="Graphform support home">
+          <span class="brand-mark" aria-hidden="true">GF</span>
+          <span class="brand-name">Graphform</span>
+        </a>
+        <span class="masthead-label">Product support</span>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="support-title">
+          <p class="eyebrow">Graphform support</p>
+          <h1 id="support-title">Ask a question or request support</h1>
+          <p class="lede">
+            Get help with Graphform, report unexpected behavior, share accessibility feedback,
+            or suggest an improvement. Support requests are handled in Graphform’s public GitHub
+            issue tracker.
+          </p>
+          <div class="actions">
+            <a
+              class="primary-action"
+              href="https://github.com/PhilipN27/PhilipN27.github.io/issues/new?title=Graphform%20support%3A%20"
+            >
+              Open a support request
+              <svg aria-hidden="true" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a
+              class="secondary-action"
+              href="https://github.com/PhilipN27/PhilipN27.github.io/issues"
+            >View existing requests</a>
+          </div>
+        </section>
+
+        <section class="support-grid" aria-label="Support request guidance">
+          <div class="panel">
+            <p class="section-label">What to include</p>
+            <h2>Details that help us investigate</h2>
+            <ol class="checklist">
+              <li>A short description of the question or problem.</li>
+              <li>The steps you took and what you expected to happen.</li>
+              <li>Your device model, operating-system version, and Graphform version.</li>
+              <li>Any error message you saw. Screenshots are helpful when they do not contain private data.</li>
+            </ol>
+          </div>
+
+          <aside class="panel details" aria-label="Support channel details">
+            <div>
+              <strong>Questions and problems</strong>
+              <p>Use the support request link for setup questions, app behavior, import, export, and accessibility.</p>
+            </div>
+            <div>
+              <strong>Feature requests</strong>
+              <p>Describe the workflow you are trying to complete and the result you need.</p>
+            </div>
+            <div class="privacy-note">
+              <strong>Protect your information</strong>
+              <p>Support requests are public. Do not include passwords, private graph content, or other sensitive information.</p>
+            </div>
+          </aside>
+        </section>
+      </main>
+
+      <footer>
+        <p>Graphform support</p>
+        <a href="https://github.com/PhilipN27/PhilipN27.github.io/issues">Support request tracker</a>
+      </footer>
+    </div>
+  </body>
+</html>
